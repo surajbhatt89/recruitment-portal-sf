@@ -1,3 +1,15 @@
 <template>
-
+    <lightning-card title="jobOpenings" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <template for:each={jobOpenings} for:item="job">
+                <div key={job.Id}>
+                    <p>{job.Name}</p>
+                    <p>{job.Experience__c}</p>
+                    <p>{job.Required_Skills__c}</p>
+                    <p>{job.Salary_Range__c}</p>
+                    <p>{job.Status__c}</p>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
 </template>
