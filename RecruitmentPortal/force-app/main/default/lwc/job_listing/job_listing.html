@@ -1,13 +1,56 @@
 <template>
-    <lightning-card title="jobOpenings" icon-name="custom:custom63">
+    <lightning-card title="Job Openings" icon-name="standard:job_position" class="slds-card_boundary">
         <div class="slds-m-around_medium">
             <template for:each={jobOpenings} for:item="job">
-                <div key={job.Id}>
-                    <p>{job.Name}</p>
-                    <p>{job.Experience__c}</p>
-                    <p>{job.Required_Skills__c}</p>
-                    <p>{job.Salary_Range__c}</p>
-                    <p>{job.Status__c}</p>
+                <div key={job.Id} class="job-card">
+
+                    <!-- Header -->
+                    <div class="job-header">
+                        <div>
+                            <div class="slds-text-heading_small">
+                                {job.Name}
+                            </div>
+
+                            <div class="slds-m-top_x-small">
+                                <span class="slds-text-color_weak">
+                                    {job.Status__c}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Job information -->
+                    <div class="job-details slds-m-top_medium">
+
+                        <span class="slds-badge slds-m-right_x-small">
+                            Experience  : {job.Experience__c}
+                        </span>
+
+                        <span class="slds-badge slds-m-right_x-small">
+                            Salary Range : {job.Salary_Range__c}
+                        </span>
+
+                    </div>
+
+                    <div class="skills slds-m-top_small">
+                        <span class="slds-text-title">
+                            Required Skills :
+                        </span>
+                        {job.Required_Skills__c}
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="job-footer">
+
+                        <lightning-button label="View Details" variant="neutral" onclick={handleDetails}
+                            data-id={job.Id}>
+                        </lightning-button>
+
+                        <lightning-button label="Apply Now" variant="brand" onclick={handleApply} data-id={job.Id}>
+                        </lightning-button>
+
+                    </div>
+
                 </div>
             </template>
         </div>
